@@ -30,4 +30,14 @@ Open Slider, choose 3–7 unique model and reasoning pairs, drag to reorder, the
 
 This is an unofficial preview, not affiliated with OpenAI. The app is locally signed and not Apple-notarized; a trusted download may require [Open Anyway](https://support.apple.com/en-us/102445). Codex 25241 passed local compatibility checks; live slider UI and inference remain unverified. Model access depends on your Codex account.
 
-Application source remains private during validation. This repository contains download instructions and the installer; release attachments contain the app, installer and checksums. No Node runtime is bundled. Future versions use the same installation command.
+Application source remains private during validation. This repository contains download instructions, the installer and signed compatibility data; release attachments contain the app, installer and checksums. No Node runtime is bundled. Future versions use the same installation command.
+
+## Signed compatibility updates
+
+[The signed compatibility list](https://raw.githubusercontent.com/jiediking/codex-slider-downloads/main/compatibility-feed.json) is public and requires no account. Existing Slider 0.5.0 users can enable this source once:
+
+```sh
+"/Applications/Codex Slider.app/Contents/MacOS/CodexSlider" --set-compatibility-url https://raw.githubusercontent.com/jiediking/codex-slider-downloads/main/compatibility-feed.json
+```
+
+Then choose **Check compatibility again**. An unchanged adapter needs only a reviewed signed-list update; an actual adapter change requires a new Slider version. Enabling the source does not declare unreviewed Codex builds compatible.
