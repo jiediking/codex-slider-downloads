@@ -2,7 +2,7 @@
 
 Customize Codex’s Default Slider with 3–7 model and reasoning presets.
 
-**[Download 0.5.1](https://github.com/jiediking/codex-slider-downloads/releases/tag/v0.5.1)** · [DMG](https://github.com/jiediking/codex-slider-downloads/releases/download/v0.5.1/Codex-Slider-0.5.1-macOS-arm64.dmg) · [Checksums](https://github.com/jiediking/codex-slider-downloads/releases/download/v0.5.1/SHA256SUMS.txt)
+**[Download 0.6.0](https://github.com/jiediking/codex-slider-downloads/releases/tag/v0.6.0)** · [DMG](https://github.com/jiediking/codex-slider-downloads/releases/download/v0.6.0/Codex-Slider-0.6.0-macOS-arm64.dmg) · [Checksums](https://github.com/jiediking/codex-slider-downloads/releases/download/v0.6.0/SHA256SUMS.txt)
 
 ## Requirements
 
@@ -28,11 +28,13 @@ Open Slider, choose 3–7 unique model and reasoning pairs, drag to reorder, the
 
 ## Compatibility updates
 
-Slider uses a [public signed list](https://raw.githubusercontent.com/jiediking/codex-slider-downloads/main/compatibility-feed.json). It checks on startup and can fetch reviewed data when a Codex update is detected. The visible **Check compatibility** button forces another check and shows the result without changing presets. Verified data remains available offline.
+**A normal Codex update no longer needs a manually added version entry.** Slider can verify an unlisted official installation locally. Your next custom launch checks the existing adapter, applies presets and reads them back before remembering success for that exact installation. This local check needs no online compatibility entry.
 
-**Same adapter: update the signed list only. New adapter: update Slider.** A build awaiting review and a failed download are distinct from a required adapter upgrade. Current data includes Codex **26.1103.31037 (25241)**.
+**Check compatibility** rechecks the installation and any published [signed data](https://raw.githubusercontent.com/jiediking/codex-slider-downloads/main/compatibility-feed.json), without changing presets or starting Codex. “Official Codex verified · adapter check on launch” means it is ready for the next step: launch Codex through Slider to complete the runtime check.
 
-0.5.1 repairs checking and selection when old and new Codex copies are installed together. The existing slider adapter is unchanged. It also shows the app and detected Codex versions. To report a problem, run this read-only command:
+A confirmed interface or preset-schema mismatch asks for a new Slider adapter. Loading, missing configuration, ambiguous clients and timeouts ask you to retry. A changed installation invalidates the local result automatically. Every custom launch probes again. Signed data still provides reviewed compatibility information and known adapter requirements.
+
+After installing, open `/Applications/Codex Slider.app` and check that its header says **v0.6.0**. To report a problem, run this read-only command; it does not start Codex or change presets:
 
 ```sh
 "/Applications/Codex Slider.app/Contents/MacOS/CodexSlider" --diagnose
