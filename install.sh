@@ -2,10 +2,10 @@
 # Downloads as the user; only the bundle transaction may request administrator authorization.
 # Only runs the verified App's dependency check; never opens the editor/Codex or changes preferences/security.
 set -euo pipefail
-PACKAGE_URL='https://github.com/jiediking/codex-slider-downloads/releases/download/v0.6.2/Codex-Slider-0.6.2-macOS-arm64.dmg'
-PACKAGE_SHA256='bdbf996a92f45df8d8536287d73ca17b744cbf44ac9718980f675a68db519715'
+PACKAGE_URL='https://github.com/jiediking/codex-slider-downloads/releases/download/v0.6.3/Codex-Slider-0.6.3-macOS-arm64.dmg'
+PACKAGE_SHA256='8f780a9def2a70bf4df965d37c72a26035a786cd433bbb1ed1a3a2c28af03fc6'
 APP_FILENAME='Codex Slider.app'
-APP_VERSION='0.6.2'
+APP_VERSION='0.6.3'
 SYSTEM_APP_PATH='/Applications/Codex Slider.app'
 APP_PATH="${CODEX_SLIDER_APP_PATH:-/Applications/$APP_FILENAME}"
 LEGACY_ROOT="$HOME/Applications"
