@@ -2,7 +2,7 @@
 
 Customize Codex’s Default Slider with 3–7 model and reasoning presets.
 
-**[Download 0.6.1](https://github.com/jiediking/codex-slider-downloads/releases/tag/v0.6.1)** · [DMG](https://github.com/jiediking/codex-slider-downloads/releases/download/v0.6.1/Codex-Slider-0.6.1-macOS-arm64.dmg) · [Checksums](https://github.com/jiediking/codex-slider-downloads/releases/download/v0.6.1/SHA256SUMS.txt)
+**[Download 0.6.2](https://github.com/jiediking/codex-slider-downloads/releases/tag/v0.6.2)** · [DMG](https://github.com/jiediking/codex-slider-downloads/releases/download/v0.6.2/Codex-Slider-0.6.2-macOS-arm64.dmg) · [Checksums](https://github.com/jiediking/codex-slider-downloads/releases/download/v0.6.2/SHA256SUMS.txt)
 
 ## Requirements
 
@@ -18,30 +18,39 @@ Quit every copy of Codex Slider, then copy this line into Terminal:
 /bin/bash -o pipefail -c '/usr/bin/curl -fsSL https://raw.githubusercontent.com/jiediking/codex-slider-downloads/main/install.sh | /bin/bash'
 ```
 
-No GitHub account, GitHub CLI, Python or npm setup is needed. The installer verifies the package checksum, app identity, signature, version and Node before installing to `/Applications/Codex Slider.app`. Saved presets are kept. macOS asks if administrator permission is needed.
-
-Alternatively, open the DMG and drag Slider to Applications.
+No GitHub account or GitHub CLI is needed. The installer verifies the package, signature and Node before installing to `/Applications/Codex Slider.app`. Presets are kept. macOS asks if administrator permission is needed. Alternatively, open the DMG and drag Slider to Applications. Open Slider and confirm **v0.6.2** in its header.
 
 ## Use
 
-Open Slider, choose 3–7 unique model and reasoning pairs, drag to reorder, then choose **Save & launch Codex**. Read the local debugging explanation on first use. If Codex is running, save your work and quit it normally when prompted. After configuration read-back, Slider stays open so you can check its actual effect in Codex and then close Slider manually. Launch through Slider for custom presets; Codex’s regular icon uses its standard slider.
+1. Open Slider and choose 3–7 unique model/reasoning pairs. Drag to reorder.
+2. Choose **Save & launch Codex** and read the local debugging explanation on first use. If Codex is running, save your work and quit it normally when prompted.
+3. Open Codex’s **Default slider menu**. Slider independently checks the rendered stops and current selection. **Your slider is ready** confirms a match.
+4. Close Slider when finished. Launch through Slider for custom presets; Codex’s regular icon uses its standard slider.
 
-## Compatibility checks
+## Compatibility
 
-For a build outside the [signed list](https://raw.githubusercontent.com/jiediking/codex-slider-downloads/main/compatibility-feed.json), Slider can verify the official installation and try the existing adapter during your next custom launch. Configuration read-back alone does not prove that the slider adopted the presets.
+Codex updates do not normally need a new entry in the [signed list](https://raw.githubusercontent.com/jiediking/codex-slider-downloads/main/compatibility-feed.json). For an unlisted official installation, Slider tries its existing adapter and independently compares the actual rendered slider with your presets.
 
-**0.6.1 fixes false success reporting.** After presets are written and read back, the result remains **Slider effect not confirmed**. The window stays open. Check the actual preset count, models, reasoning levels and order in Codex, then close Slider manually. Old 0.6.0 success records are ignored.
+**Slider effect not confirmed** means there is not enough evidence yet. Keep the Default menu open and use **Check now**. Loading, unavailable models, a closed menu or missing observation evidence stays unconfirmed. A confirmed configuration mismatch or a stable, fully available slider that differs from the presets asks for an adapter update.
 
-**Check compatibility** rechecks installation eligibility and published signed data; it does not start Codex or certify the actual slider effect. Confirmed interface/schema mismatches can ask for a new adapter. Loading, absent configuration and timeouts allow retry. Independent consumer verification is still to be implemented.
+**Check compatibility** rechecks the installation and signed data and retries a pending check in Slider’s current launch session. A saved result is historical; every new custom launch checks again. Read-back alone and old 0.6.0 success records cannot certify the slider.
 
-After installing, open `/Applications/Codex Slider.app` and confirm **v0.6.1** in its header. To report a problem, run this read-only command; it does not start Codex or change presets:
+## Testing a Codex upgrade locally
+
+Keep your installed 0.6.0 until its test is complete; you may download the 0.6.2 DMG without installing it. After updating Codex, launch through 0.6.0 and check the actual count, models, reasoning levels, order and first/middle/last choices. Its success message alone is insufficient because 0.6.0 could misreport read-back as full success.
+
+Then quit Codex and Slider, install 0.6.2 with the command above, and repeat on the same new Codex with the same presets. Check both the real slider and **Your slider is ready**. Test 0.6.2 even if 0.6.0 worked, so the new independent verification is covered. No new target build is being added to the signed list for this comparison.
+
+For a read-only installation report, run:
 
 ```sh
 "/Applications/Codex Slider.app/Contents/MacOS/CodexSlider" --diagnose
 ```
 
+This static report does not start Codex. Its `consumerVerified: false` is not a live-session verdict. The actual launch record is `~/Library/Application Support/Codex Slider/last-launch.json`; 0.6.2 records `consumer-verified` only after independent evidence matches.
+
 ## Preview status
 
-Unofficial; not affiliated with OpenAI. Locally signed and not Apple-notarized; a trusted download may require [Open Anyway](https://support.apple.com/en-us/102445). Codex 25241 passed local compatibility checks; live native-slider UI and inference remain unverified. Model access depends on your Codex account.
+Unofficial; not affiliated with OpenAI. Locally signed and not Apple-notarized; a trusted download may require [Open Anyway](https://support.apple.com/en-us/102445). Model access depends on your Codex account. Non-interrupting checks passed; the local real Codex upgrade comparison is pending.
 
 Application source remains private. This repository contains download instructions, the installer and signed compatibility data. Releases contain the app, installer and checksums; no Node runtime or developer files are bundled. Future versions use the same installation command.
